@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Valentine's Yes or No - 4 Clicks</title>
+<style>
+  body {
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+    font-family: 'Arial', sans-serif;
+    color: #880e4f;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    margin-bottom: 50px;
+  }
+  button {
+    background-color: #e91e63;
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    margin: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  button:hover {
+    background-color: #ad1457;
+  }
+  #noBtn.enlarge {
+    transform: scale(1.5);
+  }
+  #message {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    margin-top: 50px;
+    white-space: pre-wrap;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+  }
+  #buttons-container {
+    margin-top: 30px;
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<h1>Will You Be My Valentine?</h1>
+
+<div id="buttons-container">
+  <button id="yesBtn">Yes</button>
+  <button id="noBtn">No</button>
+</div>
+
+<div id="message"></div>
+
+<script>
+  const buttonsContainer = document.getElementById('buttons-container');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const messageDiv = document.getElementById('message');
+
+  let noClickCount = 0;
+
+  noBtn.addEventListener('click', () => {
+    noClickCount++;
+    if (noClickCount === 1) {
+      messageDiv.textContent = "sure kaba dyan? 💭";
+      noBtn.classList.add('enlarge');
+      setTimeout(() => {
+        noBtn.classList.remove('enlarge');
+      }, 800);
+    } else if (noClickCount === 2) {
+      messageDiv.textContent = "ayaw mo talaga? aray mo";
+      noBtn.classList.add('enlarge');
+      setTimeout(() => {
+        noBtn.classList.remove('enlarge');
+      }, 800);
+    } else if (noClickCount === 3) {
+      // Show 4th click buttons
+      messageDiv.textContent = "";
+      buttonsContainer.innerHTML = `
+        <button id="tryAgainBtn">Try Again</button>
+        <button id="friendBtn">ah tropa lang?</button>
+      `;
+      addFourthClickListeners();
+    }
+  });
+
+  yesBtn.addEventListener('click', () => {
+    buttonsContainer.style.display = 'none';
+    messageDiv.textContent = `My dearest love,
+   i'm so proud of you for not giving up. you are doing your best and easy not been easy on you.
+ you are steel strong enough to make it through don't ever think of doing things that you will harm you because
+ it will never do anything good to you. there are always better this coming, kahit na may mga dahilan para panghinaan ka,
+ always remember na mas maraming dahilan para magpatuloy, if you need anyone, i'm always here, i'm willing to listen to you, 
+to me all your rants and i catch it with no judgement
+
+Happy Valentine's Day, now and always. ❤️`;
+  });
+
+  function addFourthClickListeners() {
+    const tryAgainBtn = document.getElementById('tryAgainBtn');
+    const friendBtn = document.getElementById('friendBtn');
+
+    tryAgainBtn.style.backgroundColor = '#e91e63';
+    tryAgainBtn.style.borderRadius = '12px';
+    tryAgainBtn.style.color = 'white';
+    tryAgainBtn.style.fontSize = '1.5rem';
+    tryAgainBtn.style.padding = '15px 40px';
+    tryAgainBtn.style.margin = '15px';
+    tryAgainBtn.style.cursor = 'pointer';
+    tryAgainBtn.style.transition = 'background-color 0.3s ease';
+    tryAgainBtn.onmouseover = () => tryAgainBtn.style.backgroundColor = '#ad1457';
+    tryAgainBtn.onmouseout = () => tryAgainBtn.style.backgroundColor = '#e91e63';
+
+    friendBtn.style.backgroundColor = '#e91e63';
+    friendBtn.style.borderRadius = '12px';
+    friendBtn.style.color = 'white';
+    friendBtn.style.fontSize = '1.5rem';
+    friendBtn.style.padding = '15px 40px';
+    friendBtn.style.margin = '15px';
+    friendBtn.style.cursor = 'pointer';
+    friendBtn.style.transition = 'background-color 0.3s ease';
+    friendBtn.onmouseover = () => friendBtn.style.backgroundColor = '#ad1457';
+    friendBtn.onmouseout = () => friendBtn.style.backgroundColor = '#e91e63';
+
+    tryAgainBtn.addEventListener('click', () => {
+      noClickCount = 0;
+      messageDiv.textContent = "";
+      buttonsContainer.innerHTML = `
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+      `;
+      attachInitialListeners();
+    });
+
+    friendBtn.addEventListener('click', () => {
+      buttonsContainer.style.display = 'none';
+      messageDiv.textContent = "tangina mo edi wag. 💕";
+    });
+  }
+
+  function attachInitialListeners() {
+    const yesBtnNew = document.getElementById('yesBtn');
+    const noBtnNew = document.getElementById('noBtn');
+
+    yesBtnNew.addEventListener('click', () => {
+      buttonsContainer.style.display = 'none';
+      messageDiv.textContent = `My dearest love,
+
+     i'm so proud of you for not giving up. you are doing your best and easy not been easy on you. you are steel stron
+ enough to make it through don't ever think of doing things that you will harm you because it will never do anything good to you.
+there are always better this coming, kahit na may mga dahilan para panghinaan ka,
+ always remember na mas maraming dahilan para magpatuloy, if you need anyone, i'm always here,
+ i'm willing to listen to you, to me all your rants and i catch it with no judgement
+
+Happy Valentine's Day, now and always. ❤️`;
+    });
+
+    noBtnNew.addEventListener('click', () => {
+      noClickCount++;
+      if (noClickCount === 1) {
+        messageDiv.textContent = "sure kaba dyan? 💭";
+        noBtnNew.classList.add('enlarge');
+        setTimeout(() => {
+          noBtnNew.classList.remove('enlarge');
+        }, 800);
+      } else if (noClickCount === 2) {
+        messageDiv.textContent = "ayaw mo talaga?aray mo ";
+        noBtnNew.classList.add('enlarge');
+        setTimeout(() => {
+          noBtnNew.classList.remove('enlarge');
+        }, 800);
+      } else if (noClickCount === 3) {
+        // Show 4th click buttons again
+        messageDiv.textContent = "";
+        buttonsContainer.innerHTML = `
+          <button id="tryAgainBtn">Try Again</button>
+          <button id="friendBtn">ah tropa lang?</button>
+        `;
+        addFourthClickListeners();
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
